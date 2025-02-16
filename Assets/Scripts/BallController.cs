@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
  public class BallController : MonoBehaviour
  {
- [SerializeField] private float force = 50f;
+ [SerializeField] private float force = 5;
+ [SerializeField] private bool clicked = false;
  [SerializeField] private InputManager inputManager;
 
 	private Rigidbody ballRB;
@@ -22,6 +23,7 @@ using UnityEngine.Events;
 	private void LaunchBall()
 
 	{
-	ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
+	if(!clicked){
+	ballRB.AddForce(transform.forward * 5, ForceMode.Impulse);clicked=true;}
 	}
 }

@@ -29,6 +29,7 @@ private GameObject pinObjects;
  pin.OnPinFall.AddListener(IncrementScore);
  }
 inputManager.OnResetPressed.AddListener(HandleReset);
+SetPins();
  }
 
 private void HandleReset()

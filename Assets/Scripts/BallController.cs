@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
  public class BallController : MonoBehaviour
  {
- [SerializeField] private float force = 5;
+[SerializeField] private Transform ballAnchor;
+
  [SerializeField] private bool clicked = false;
  [SerializeField] private InputManager inputManager;
 
@@ -17,6 +18,9 @@ using UnityEngine.Events;
  	// When the space key is pressed the
  	// LaunchBall method will be called.
  		inputManager.OnSpacePressed.AddListener(LaunchBall);
+	transform.parent = ballAnchor;
+	 transform.localPosition = Vector3.zero;
+	ballRB.isKinematic=true;
 	 }
 
 
@@ -24,6 +28,9 @@ using UnityEngine.Events;
 
 	{
 	if(!clicked){
-	ballRB.AddForce(transform.forward * 5, ForceMode.Impulse);clicked=true;}
+clicked=true;
+transform.parent = null; ballRB.isKinematic=false;
+ballRB.AddForce(transform.forward * 5, ForceMode.Impulse);
+}
 	}
 }

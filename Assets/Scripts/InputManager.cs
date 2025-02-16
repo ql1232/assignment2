@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 {
 public UnityEvent OnSpacePressed = new UnityEvent();
 public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>();
+public UnityEvent OnResetPressed = new UnityEvent();
 void Update()
 {
 if (Input.GetKeyDown(KeyCode.Space))
@@ -23,5 +24,9 @@ if (Input.GetKey(KeyCode.A))
  input += Vector2.up;
  }
  OnMove?.Invoke(input);
+if (Input.GetKeyDown(KeyCode.R))
+ {
+OnResetPressed?.Invoke();
+ }
 }
 }

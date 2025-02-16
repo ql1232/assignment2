@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
  [SerializeField] private bool clicked = false;
  [SerializeField] private InputManager inputManager;
+[SerializeField] private Transform launchIndicator;
+
 
 	private Rigidbody ballRB;
  	void Start()
@@ -29,8 +31,10 @@ using UnityEngine.Events;
 	{
 	if(!clicked){
 clicked=true;
+launchIndicator.gameObject.SetActive(false);
 transform.parent = null; ballRB.isKinematic=false;
-ballRB.AddForce(transform.forward * 5, ForceMode.Impulse);
+ballRB.AddForce(launchIndicator.forward * 15, ForceMode.Impulse);
+
 }
 	}
 }
